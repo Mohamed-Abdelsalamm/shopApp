@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shop/shared/cubit/cubit.dart';
+import 'package:shop/shared/cubit/states.dart';
+import 'package:shop/shared/network/remot/model/products.dart';
 
 import '../shared/components/text_reuse.dart';
 
@@ -9,9 +13,9 @@ class FavouriteScreen extends StatefulWidget {
   State<FavouriteScreen> createState() => _FavouriteScreenState();
 }
 
-
 class _FavouriteScreenState extends State<FavouriteScreen> {
-  int indexo = 0 ;
+  int indexo = 0;
+
   List categories = [
     Padding(
       padding: const EdgeInsets.symmetric(horizontal: 7.0),
@@ -32,8 +36,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
           ),
           onPressed: () {},
           style: ButtonStyle(
-            shape:
-            MaterialStateProperty.all<RoundedRectangleBorder>(
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(
                   25.0,
@@ -60,10 +63,8 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
         ),
         onPressed: () {},
         style: ButtonStyle(
-          backgroundColor:
-          MaterialStateProperty.all<Color>(Colors.white),
-          shape:
-          MaterialStateProperty.all<RoundedRectangleBorder>(
+          backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
                 25.0,
@@ -85,10 +86,8 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
         ),
         onPressed: () {},
         style: ButtonStyle(
-          backgroundColor:
-          MaterialStateProperty.all<Color>(Colors.white),
-          shape:
-          MaterialStateProperty.all<RoundedRectangleBorder>(
+          backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
                 25.0,
@@ -110,10 +109,8 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
         ),
         onPressed: () {},
         style: ButtonStyle(
-          backgroundColor:
-          MaterialStateProperty.all<Color>(Colors.white),
-          shape:
-          MaterialStateProperty.all<RoundedRectangleBorder>(
+          backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
                 25.0,
@@ -127,10 +124,38 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SingleChildScrollView(
+    return BlocConsumer<AppCubit, AppStates>(
+      listener: (BuildContext context, Object? state) {},
+      builder: (BuildContext context, state) {
+        AppCubit cubit = BlocProvider.of(context);
+        return Container(
+          width: double.infinity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('${cubit.products1?.products![0].name}'),
+              Icon(
+                Icons.favorite_border_outlined,
+                size: 100,
+                color: Colors.grey,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextReuse(
+                text: 'No Items added yet',
+                color: Colors.black45,
+                size: 25,
+              )
+            ],
+          ),
+        );
+      },
+    );
+  }
+}
+
+/*SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Padding(
             padding: const EdgeInsets.all(20.0),
@@ -161,10 +186,10 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                           borderRadius: BorderRadius.circular(
                             25.0,
                           ),
-                          /*side: BorderSide(
+                          */ /*side: BorderSide(
                                         color: Colors.grey,
                                         width: 0.4,
-                                      ),*/
+                                      ),*/ /*
                         ),
                       ),
                     ),
@@ -281,10 +306,10 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                           borderRadius: BorderRadius.circular(
                             25.0,
                           ),
-                          /*side: BorderSide(
+                          */ /*side: BorderSide(
                                             color: Colors.grey,
                                             width: 0.4,
-                                          ),*/
+                                          ),*/ /*
                         ),
                       ),
                     ),
@@ -403,10 +428,10 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                           borderRadius: BorderRadius.circular(
                             25.0,
                           ),
-                          /*side: BorderSide(
+                          */ /*side: BorderSide(
                                         color: Colors.grey,
                                         width: 0.4,
-                                      ),*/
+                                      ),*/ /*
                         ),
                       ),
                     ),
@@ -490,8 +515,4 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
               ],
             ),
           ),
-        ),
-      ],
-    );
-  }
-}
+        ),*/

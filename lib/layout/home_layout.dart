@@ -12,7 +12,7 @@ class HomeLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => AppCubit(),
+      create: (BuildContext context) => AppCubit()..getDataFromApi()..openData(),
       child: BlocConsumer<AppCubit, AppStates>(
         listener: (BuildContext context, Object? state) {},
         builder: (context, state) {
@@ -44,7 +44,8 @@ class HomeLayout extends StatelessWidget {
                         ),
                         child: IconButton(
                           color: Colors.white,
-                          onPressed: () {},
+                          onPressed: () {
+                          },
                           icon: const Icon(
                             Icons.shopping_cart,
                             size: 22,

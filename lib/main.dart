@@ -2,11 +2,14 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:shop/layout/home_layout.dart';
 import 'package:shop/shared/bloc_observer.dart';
+import 'package:shop/shared/network/remot/model/apii.dart';
 import 'modules/products/products_details_screen.dart';
 
 void main() {
+
   Bloc.observer = MyBlocObserver();
-  runApp(const MyApp());
+  // GetApi.getData();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
